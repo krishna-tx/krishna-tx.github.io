@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="nav">
+            <nav>
+                <div class="nav-bar">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Me</a>
+                    <a href="resources.html">Resources</a>
+                    <a href="feedback.html">Feedback</a>
+                </div>
+            </nav>
+        </div>
+        <div class="main">
+            <h1>Welcome to my Website!</h1>
+            <p>Hello! My name is Krishna Ramesh and this is my personal website I created for my AP CSP class at American High School</p>
+            <img src="images/american.png">
+            <p>Use the navigation bar to</p>
+            <li>Learn <a href="about.html"> about me</a></li>
+            <li>Learn <a href="resources.html">how I created the website</a></li>
+            <li>Give <a href="feedback.html">feedback</a></li>
+            <br>
+            <p>If you don't like the background, you can use these sliders to change the background color of the webpage.</p>
+            <div>
+                <div>
+                    <label style="color:red">Red Gradient
+                        <input type="range" min="0" max="255" value="240" class="slider" id="Rslider">
+                    </label>
+                    <span id="Rvalue"></span>
+                </div>
+                <div>
+                    <label style="color:green">Green Gradient
+                        <input type="range" min="0" max="255" value="206" class="slider" id="Gslider">
+                    </label>
+                    <span id="Gvalue"></span>
+                </div>
+                <div>
+                    <label style="color:blue">Blue Gradient
+                        <input type="range" min="0" max="255" value="214" class="slider" id="Bslider">
+                    </label>
+                    <span id="Bvalue"></span>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            window.onload = function() {
+                var Rslider = document.getElementById("Rslider");
+                var Gslider = document.getElementById("Gslider");
+                var Bslider = document.getElementById("Bslider");
+
+                var setGradient = function(output, value) {
+                    output.innerHTML = value;
+                    document.body.style.backgroundColor = 'rgb('+Rslider.value+','+Gslider.value+','+Bslider.value+')';
+
+                }
+
+                setGradient(document.getElementById("Rvalue"), Rslider.value);
+                setGradient(document.getElementById("Gvalue"), Gslider.value);
+                setGradient(document.getElementById("Bvalue"), Bslider.value);
+
+                Rslider.oninput = function() {
+                    let Rslidervalue = document.getElementById("Rvalue");
+                    setGradient(Rslidervalue, this.value);
+                }
+                Gslider.oninput = function() {
+                    let Gslidervalue = document.getElementById("Gvalue");
+                    setGradient(Gslidervalue, this.value);
+                }
+                Bslider.oninput = function() {
+                    let Bslidervalue = document.getElementById("Bvalue");
+                    setGradient(Bslidervalue, this.value);
+                }
+            }
+        </script>
+    </body>
+</html>
+
